@@ -1,0 +1,19 @@
+# Переменные окружения — НИКОГДА не пушить!
+.env
+.env.local
+.env.*
+
+# Зависимости
+node_modules/
+
+# Сборка
+build/
+dist/
+
+# Системные
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: florista-api
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: TOKEN_SECRET
+        generateValue: true
+      - key: DB_SSL
+        value: "true"
+      - key: DB_PORT
+        value: "4000"
