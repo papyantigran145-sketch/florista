@@ -132,22 +132,32 @@ html, body {
    ───────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
 
-  /* — Шапка: одна аккуратная строка. Меню уходит в бургер — */
+  /* — Шапка в две строки:
+       строка 1 — бургер + логотип + (язык, тема, логин, корзина)
+       строка 2 — поиск во всю ширину — */
   .header-inner {
-    height: 60px;
-    padding: 0 1rem;
-    gap: .4rem;
-    flex-wrap: nowrap;
+    height: auto;
+    padding: .5rem 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .4rem .5rem;
   }
-  .logo { font-size: 1.4rem; margin-right: auto; }
 
-  /* Бургер показываем, десктопную навигацию и поиск прячем
-     (они доступны в выезжающем мобильном меню) */
-  .nav-burger { display: inline-flex !important; }
+  .nav-burger { display: inline-flex !important; order: 1; }
+  .logo { font-size: 1.4rem; order: 2; margin-right: auto; }
+  .header-actions { order: 3; gap: .35rem; flex-shrink: 0; }
+
+  /* Навигация-ссылки прячем — они доступны в бургер-меню */
   .main-nav { display: none !important; }
-  .search-bar { display: none !important; }
 
-  .header-actions { gap: .35rem; flex-shrink: 0; }
+  /* Поиск — отдельная вторая строка во всю ширину */
+  .search-bar {
+    display: flex !important;
+    order: 4;
+    width: 100%;
+    max-width: 100%;
+    margin-top: .25rem;
+  }
 
   /* — Hero — */
   .hero { padding-top: 2rem; padding-bottom: 2rem; }
