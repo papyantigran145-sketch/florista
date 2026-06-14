@@ -209,7 +209,7 @@ export default function LiveChat({ lang = 'ru' }) {
           <FiMessageCircle />
         </button>
         {open && (
-          <div style={{
+          <div className="live-chat-window" style={{
             position: 'fixed', bottom: '90px', right: '24px', zIndex: 9998,
             width: '340px', height: '480px', background: 'var(--bg-surface,#fff)',
             borderRadius: '16px', border: '1px solid var(--border,#e8e2df)',
@@ -252,7 +252,7 @@ export default function LiveChat({ lang = 'ru' }) {
       </button>
 
       {open && (
-        <div style={{
+        <div className="live-chat-window" style={{
           position: 'fixed', bottom: '90px', right: '24px', zIndex: 9998,
           width: '340px', height: '480px', background: 'var(--bg-surface,#fff)',
           borderRadius: '16px', border: '1px solid var(--border,#e8e2df)',

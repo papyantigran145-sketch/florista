@@ -6,10 +6,22 @@
    Брейкпоинты: 1200 / 1024 / 768 / 600 / 480 / 380.
    ============================================================ */
 
-/* Базовая защита от горизонтального скролла на всех узких экранах */
+/* Базовая защита от горизонтального скролла — на ВСЕХ экранах */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
 @media (max-width: 1024px) {
-  html, body { overflow-x: hidden; }
   img, video { max-width: 100%; height: auto; }
+  /* Ничто не должно быть шире экрана */
+  .header-inner, .section, .hero, .footer-inner,
+  .cart-drawer, .payment-modal, .product-detail,
+  .about-grid, .contact-grid {
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  /* Длинные слова/ссылки переносятся, а не растягивают блок */
+  body { word-wrap: break-word; overflow-wrap: break-word; }
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -203,6 +215,17 @@
   }
   /* статистика «О нас» — оставляем 2 колонки, но компактнее */
   .about-stats { gap: .75rem !important; }
+
+  /* — Окно чата: фиксированная ширина 340px вылезала за край
+       на узких телефонах. Делаем во всю ширину с отступами. — */
+  .live-chat-window {
+    width: auto !important;
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 84px !important;
+    height: 70vh !important;
+    max-height: 480px;
+  }
 }
 
 /* ─────────────────────────────────────────────────────────────
