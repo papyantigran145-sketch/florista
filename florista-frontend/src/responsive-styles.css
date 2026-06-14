@@ -1,0 +1,288 @@
+/* ============================================================
+   responsive-styles.css — АДАПТАЦИЯ ПОД ВСЕ УСТРОЙСТВА
+   Подключается ПОСЛЕ index.css и только дополняет его.
+   Ничего не урезает: весь функционал сохранён, элементы не
+   удаляются, а переставляются/масштабируются под экран.
+   Брейкпоинты: 1200 / 1024 / 768 / 600 / 480 / 380.
+   ============================================================ */
+
+/* Базовая защита от горизонтального скролла на всех узких экранах */
+@media (max-width: 1024px) {
+  html, body { overflow-x: hidden; }
+  img, video { max-width: 100%; height: auto; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   БУРГЕР И МОБИЛЬНОЕ МЕНЮ
+   По умолчанию (десктоп) бургер и панель скрыты.
+   Панель показывается через рендер в React; здесь — её вид.
+   ───────────────────────────────────────────────────────────── */
+.nav-burger {
+  display: none;               /* на десктопе скрыт, на мобильном включаем */
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .45);
+  z-index: 3000;
+  display: flex;
+  justify-content: flex-start;
+  animation: mnav-fade .2s ease;
+}
+@keyframes mnav-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.mobile-nav-panel {
+  width: 80%;
+  max-width: 320px;
+  height: 100%;
+  background: var(--bg-surface, #fff);
+  box-shadow: 2px 0 24px rgba(0, 0, 0, .2);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  animation: mnav-slide .25s ease;
+}
+@keyframes mnav-slide { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+
+.mobile-nav-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.mobile-nav-close {
+  width: 40px; height: 40px;
+  border: none; background: none;
+  color: var(--text-primary);
+  font-size: 1.4rem; cursor: pointer;
+}
+.mobile-nav-links { display: flex; flex-direction: column; gap: .25rem; }
+.mobile-nav-links a {
+  padding: .9rem .5rem;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-nav-links a:active { background: var(--bg-subtle); }
+
+/* ─────────────────────────────────────────────────────────────
+   БОЛЬШИЕ ПЛАНШЕТЫ / МАЛЕНЬКИЕ НОУТЫ  (≤ 1200px)
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .header-inner,
+  .section { padding-left: 1.5rem; padding-right: 1.5rem; }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ПЛАНШЕТЫ  (≤ 1024px)
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .section { padding-top: 4rem; padding-bottom: 4rem; }
+
+  /* Навигация остаётся видимой, просто компактнее */
+  .main-nav { gap: 1rem; }
+  .main-nav a { font-size: .9rem; }
+
+  /* Поиск чуть уже, но на месте */
+  .search-bar { max-width: 220px; }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+  .reviews-summary { flex-wrap: wrap; gap: 1.5rem; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   МАЛЫЕ ПЛАНШЕТЫ / КРУПНЫЕ ТЕЛЕФОНЫ  (≤ 768px)
+   Ключевой брейкпоинт. В index.css тут пряталось меню и поиск —
+   мы их ВОЗВРАЩАЕМ в адаптированном виде (горизонтальная лента).
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* — Шапка: одна аккуратная строка. Меню уходит в бургер — */
+  .header-inner {
+    height: 60px;
+    padding: 0 1rem;
+    gap: .4rem;
+    flex-wrap: nowrap;
+  }
+  .logo { font-size: 1.4rem; margin-right: auto; }
+
+  /* Бургер показываем, десктопную навигацию и поиск прячем
+     (они доступны в выезжающем мобильном меню) */
+  .nav-burger { display: inline-flex !important; }
+  .main-nav { display: none !important; }
+  .search-bar { display: none !important; }
+
+  .header-actions { gap: .35rem; flex-shrink: 0; }
+
+  /* — Hero — */
+  .hero { padding-top: 2rem; padding-bottom: 2rem; }
+  .hero-text h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .hero-text p { font-size: 1rem; }
+  .hero-actions { flex-wrap: wrap; gap: .75rem; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-outline { flex: 1 1 auto; text-align: center; }
+
+  /* — Секции/заголовки — */
+  .section { padding: 3rem 1rem; }
+  .section-title { font-size: 1.8rem; }
+  .section-header { flex-wrap: wrap; gap: .5rem; }
+
+  /* — Тулбар магазина: фильтр + сортировка в столбик — */
+  .shop-toolbar { flex-direction: column; align-items: stretch; }
+  .sort-select { width: 100%; }
+  .category-filter { overflow-x: auto; flex-wrap: nowrap; padding-bottom: .4rem; }
+  .cat-btn { white-space: nowrap; }
+
+  /* — Карточки товаров — */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  /* — Модалка деталей товара: одна колонка — */
+  .product-detail { grid-template-columns: 1fr; gap: 1.5rem; }
+  .product-detail-title { font-size: 1.6rem; }
+  .modal-overlay { padding: 1rem; }
+
+  /* — Корзина: на всю ширину экрана — */
+  .cart-drawer { width: 100%; max-width: 100%; }
+
+  /* — Оплата: модалка во весь экран, кнопки оплаты в 2 столбца — */
+  .payment-modal { width: 100%; max-width: 100%; padding: 1.5rem; border-radius: 0; min-height: 100vh; }
+  .payment-methods { grid-template-columns: repeat(2, 1fr); }
+
+  /* — Формы карты: поля в один столбец, чтобы не сжимались — */
+  .card-row { grid-template-columns: 1fr; }
+
+  /* — Отзывы — */
+  .review-header { flex-wrap: wrap; gap: .5rem; }
+  .reviews-summary { flex-direction: column; align-items: flex-start; }
+
+  /* — Подвал — */
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+
+  /* — Тосты: во всю ширину снизу — */
+  .toast-container { left: 1rem; right: 1rem; bottom: 1rem; }
+  .toast { width: 100%; }
+
+  /* — Секции «О нас» и «Контакты» свёрстаны inline-стилями
+       (grid-template-columns: 1fr 1fr прямо в JSX), поэтому
+       переопределяем их с !important — иначе на телефоне
+       контент вылезает за край и обрезается. — */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    padding: 0 1rem !important;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  /* статистика «О нас» — оставляем 2 колонки, но компактнее */
+  .about-stats { gap: .75rem !important; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ТЕЛЕФОНЫ  (≤ 600px)
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .header-actions { gap: .35rem; }
+
+  /* Язык и тема компактнее, но остаются */
+  .lang-switcher { padding: .2rem .3rem; }
+  .lang-btn { padding: .25rem .4rem; font-size: .75rem; }
+  .theme-toggle { width: 36px; height: 36px; }
+
+  .pagination { flex-wrap: wrap; gap: .4rem; }
+  .page-btn { min-width: 36px; }
+
+  .features-inner { grid-template-columns: 1fr; gap: 1.25rem; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   МАЛЫЕ ТЕЛЕФОНЫ  (≤ 480px)
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .logo { font-size: 1.25rem; }
+
+  .hero-text h1 { font-size: clamp(1.8rem, 9vw, 2.3rem); }
+
+  /* Имя пользователя в шапке не должно толкать вёрстку */
+  .header-actions span { max-width: 70px; }
+
+  /* Кнопки оплаты в один столбец на совсем узких */
+  .payment-methods { grid-template-columns: 1fr; }
+
+  /* Платёжная форма (inline-сетки в Catalog.js) — в один столбец */
+  .pay-name-phone { grid-template-columns: 1fr !important; }
+  .pay-methods-grid { grid-template-columns: 1fr 1fr 1fr !important; gap: .4rem !important; }
+
+  /* Подвал в одну колонку */
+  .footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-bottom { flex-direction: column; gap: .75rem; text-align: center; }
+  .social-links { justify-content: center; }
+
+  /* Отзыв-форма звёзды и кнопка */
+  .star-picker { gap: .25rem; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ОЧЕНЬ УЗКИЕ ЭКРАНЫ  (≤ 380px)
+   Карточки товара в один столбец — чтобы цена/кнопка не ломались
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 380px) {
+  .product-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 1.5rem; }
+  .btn-primary, .btn-outline { width: 100%; text-align: center; }
+  /* карточки статистики «О нас» в один столбец, чтобы цифры не жались */
+  .about-stats { grid-template-columns: 1fr !important; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   АЛЬБОМНАЯ ОРИЕНТАЦИЯ телефона (низкие экраны)
+   Корзина/оплата прокручиваются, не обрезаются
+   ───────────────────────────────────────────────────────────── */
+@media (max-height: 480px) and (orientation: landscape) {
+  .cart-drawer,
+  .payment-modal { overflow-y: auto; }
+  .modal-overlay { align-items: flex-start; overflow-y: auto; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   КРУПНЫЕ ЭКРАНЫ  (≥ 1600px) — шире контент, не теряем место
+   ───────────────────────────────────────────────────────────── */
+@media (min-width: 1600px) {
+  .header-inner,
+  .section { max-width: 1500px; }
+  .product-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+}
+
+/* Удобство тача: цели нажатия не меньше ~40px на сенсорных */
+@media (hover: none) and (pointer: coarse) {
+  .cat-btn, .page-btn, .lang-btn, .qty-btn,
+  .theme-toggle, .nav-link, .main-nav a { min-height: 40px; }
+  .qty-btn { min-width: 40px; }
+}

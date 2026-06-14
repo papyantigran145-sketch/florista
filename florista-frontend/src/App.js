@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import './index.css';
+import './responsive-styles.css';
 import {
   FiZap, FiStar, FiTruck, FiLock, FiMessageCircle, FiMapPin, FiPhone,
   FiMail, FiClock, FiUsers, FiCheckCircle, FiAlertCircle,
@@ -464,7 +465,7 @@ export default function App() {
 
       {/* ABOUT */}
       <section className="section" id="about" style={{ background: 'var(--bg-surface)', margin: 0, maxWidth: '100%', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '1320px', margin: '0 auto', padding: '0 2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+        <div className="about-grid" style={{ maxWidth: '1320px', margin: '0 auto', padding: '0 2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
           <div>
             <div style={{ fontSize: '.8rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--pink-400)', marginBottom: '1rem' }}>{t.aboutEyebrow}</div>
             <h2 className="section-title" style={{ marginBottom: '1.5rem' }}>{t.aboutTitle} <em>{t.aboutTitleEm}</em> {t.aboutSub}</h2>
@@ -472,7 +473,7 @@ export default function App() {
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '2rem' }}>{t.aboutP2}</p>
             <a href="#contact" className="btn-primary">{t.aboutBtn}</a>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+          <div className="about-stats" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             {[[<LuFlower2 key="i" />, '200+', lang === 'ru' ? 'Видов цветов' : lang === 'en' ? 'Flower types' : 'Ծաղկի տեսակ'],
               [<FiTruck key="i" />, '1-2ч', lang === 'ru' ? 'Доставка' : lang === 'en' ? 'Delivery' : 'Առաքում'],
               [<FiStar key="i" />, '4.9', lang === 'ru' ? 'Рейтинг' : lang === 'en' ? 'Rating' : 'Վարկանիш'],
@@ -493,7 +494,7 @@ export default function App() {
         <div className="section-header">
           <h2 className="section-title">{t.contactTitle}</h2>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }}>
+        <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'start' }}>
           <div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               {[

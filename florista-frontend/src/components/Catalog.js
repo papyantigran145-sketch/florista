@@ -557,7 +557,7 @@ export function PaymentModal({ open, cart, total, onClose, onSuccess, toast, t, 
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '.75rem', marginBottom: '1.25rem' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '.75rem' }}>
+              <div className="pay-name-phone" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '.75rem' }}>
                 <div><label style={{ fontSize: '.78rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '.05em', display: 'block', marginBottom: '.35rem' }}>Имя *</label>
                   <input style={inp} placeholder="Ваше имя" value={form.name} onChange={e => setF('name', e.target.value)} /></div>
                 <div><label style={{ fontSize: '.78rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '.05em', display: 'block', marginBottom: '.35rem' }}>Телефон *</label>
@@ -570,7 +570,7 @@ export function PaymentModal({ open, cart, total, onClose, onSuccess, toast, t, 
             </div>
 
             <div style={{ fontSize: '.78rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: '.6rem' }}>Способ оплаты</div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '.5rem', marginBottom: '1.25rem' }}>
+            <div className="pay-methods-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '.5rem', marginBottom: '1.25rem' }}>
               {methods.map((m) => (
                 <div key={m.key} onClick={() => setMethod(m.key)}
                   style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '.3rem', padding: '.6rem .4rem', borderRadius: '10px', cursor: 'pointer', border: `2px solid ${method === m.key ? m.color : 'var(--border)'}`, background: method === m.key ? `${m.color}15` : 'var(--bg-surface)', transition: 'all .15s' }}>

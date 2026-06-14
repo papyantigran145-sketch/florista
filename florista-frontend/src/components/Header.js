@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import {
-  FiSearch, FiShoppingCart, FiSun, FiMoon, FiX, FiUser, FiLogOut, FiLogIn,
+  FiSearch, FiShoppingCart, FiSun, FiMoon, FiX, FiUser, FiLogOut, FiLogIn, FiMenu,
   FiCreditCard, FiCamera, FiTrash2, FiPackage, FiShield, FiUsers,
   FiPlus, FiMinus, FiChevronRight, FiCheckCircle, FiAlertCircle,
 } from 'react-icons/fi';
@@ -478,6 +478,7 @@ export default function Header({
   const [authOpen, setAuthOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
+  const [mobileNav, setMobileNav] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -490,6 +491,10 @@ export default function Header({
       <style>{drawerStyles}</style>
       <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
         <div className="header-inner">
+          <button className="nav-burger" aria-label="menu" onClick={() => setMobileNav(true)}>
+            <FiMenu />
+          </button>
+
           <a href="/" className="logo">Flori<em>sta</em></a>
 
           <nav className="main-nav">
@@ -552,6 +557,25 @@ export default function Header({
           </div>
         </div>
       </header>
+
+      {/* Мобильное выезжающее меню (бургер) */}
+      {mobileNav && (
+        <div className="mobile-nav-overlay" onClick={(e) => { if (e.target === e.currentTarget) setMobileNav(false); }}>
+          <div className="mobile-nav-panel">
+            <div className="mobile-nav-head">
+              <span className="logo">Flori<em>sta</em></span>
+              <button className="mobile-nav-close" aria-label="close" onClick={() => setMobileNav(false)}><FiX /></button>
+            </div>
+            <nav className="mobile-nav-links">
+              <a href="#" onClick={() => setMobileNav(false)}>{lang === 'ru' ? 'Главная' : lang === 'en' ? 'Home' : 'Գլխավոր'}</a>
+              <a href="#shop" onClick={() => setMobileNav(false)}>{lang === 'ru' ? 'Магазин' : lang === 'en' ? 'Shop' : 'Խանութ'}</a>
+              <a href="#about" onClick={() => setMobileNav(false)}>{lang === 'ru' ? 'О нас' : lang === 'en' ? 'About' : 'Մեր մասին'}</a>
+              <a href="#contact" onClick={() => setMobileNav(false)}>{lang === 'ru' ? 'Контакты' : lang === 'en' ? 'Contact' : 'Կապ'}</a>
+              <a href="#track" onClick={() => setMobileNav(false)}>{lang === 'ru' ? 'Отслеживание' : lang === 'en' ? 'Tracking' : 'Հետևել'}</a>
+            </nav>
+          </div>
+        </div>
+      )}
 
       <AuthModal
         open={authOpen}
