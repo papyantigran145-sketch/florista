@@ -1,3 +1,4 @@
+import { API_URL } from './config.js';
 import { FiEdit2, FiTrash2, FiMessageCircle, FiUser } from 'react-icons/fi';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { io } from 'socket.io-client';

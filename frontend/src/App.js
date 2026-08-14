@@ -1,3 +1,4 @@
+import { API_URL } from './config.js';
 import { useState, useEffect, useCallback } from 'react';
 import './index.css';
 import './responsive-styles.css';

@@ -1,3 +1,4 @@
+import { API_URL } from './config.js';
 import { useState, useEffect, useRef } from 'react';
 import AdminChat from './AdminChat';
 import {

@@ -1,3 +1,4 @@
+import { API_URL } from './config.js';
 import { FiMessageCircle, FiX, FiEdit2, FiTrash2 } from 'react-icons/fi';
 import { LuFlower } from 'react-icons/lu';
 import { useState, useEffect, useRef, useCallback } from 'react';
