@@ -6,7 +6,7 @@
 // LiveChat.js и AdminChat.js):
 //   { id, from: 'client'|'admin', text, ts, edited, deleted, read }
 
-import pool from './db.js';
+import pool from '../config/db.js';
 
 // Сколько последних сообщений отдаём при открытии комнаты
 const HISTORY_LIMIT = 200;

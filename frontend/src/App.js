@@ -15,7 +15,7 @@ import Footer from './components/Footer';
 import Catalog, { PaymentModal } from './components/Catalog';
 import LiveChat from './components/LiveChat';
 
-const API = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API = API_URL || 'http://localhost:5000/api';
 
 
 // ─── Переводы ─────────────────────────────────────────────────────────────

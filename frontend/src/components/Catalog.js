@@ -10,7 +10,7 @@ import { authHeaders, getToken } from '../lib/auth';
 import { pName, pDesc, cName } from '../lib/i18n';
 import { luhnCheck, detectBrand, BRAND_LABELS, formatCardNumber, formatExpiry, parseExpiry, expiryValid } from '../lib/cards';
 
-const API = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API = API_URL || 'http://localhost:5000/api';
 // React-иконки категорий (вместо эмодзи)
 const CAT_ICONS = { 1: <LuFlower2 />, 2: <LuFlower />, 3: <LuFlower2 />, 4: <LuFlower />, default: <LuFlower /> };
 const fmt = (n) => '֏' + Number(n).toLocaleString('en-US');
@@ -338,7 +338,7 @@ function ProductModal({ open, productId, onClose, onAddToCart, toast, user, t, l
 
 /* ── Payment Modal ── */
 export function PaymentModal({ open, cart, total, onClose, onSuccess, toast, t, user }) {
-  const API = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+  const API = API_URL || 'http://localhost:5000/api';
   const [method, setMethod]   = useState('cash');
   const [step, setStep]       = useState(1);
   const [orderId, setOrderId] = useState(null);

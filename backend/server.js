@@ -9,8 +9,8 @@ import Stripe            from 'stripe';
 import nodemailer        from 'nodemailer';
 import { fileURLToPath } from 'url';
 import 'dotenv/config';
-import pool              from './db.js';
-import { generateProducts } from './gemini.js';
+import pool              from './src/config/db.js';
+import { generateProducts } from './src/services/gemini.service.js';
 import { createServer }  from 'http';
 import { Server }        from 'socket.io';
 import {
@@ -22,7 +22,7 @@ import {
   markRoomRead,
   countUnread,
   listSessions,
-} from './chat-store.js';
+} from './src/services/chat.service.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);

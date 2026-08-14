@@ -2,7 +2,7 @@ import { FiEdit2, FiTrash2, FiMessageCircle, FiUser } from 'react-icons/fi';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { io } from 'socket.io-client';
 
-const API = (process.env.REACT_APP_API_URL || 'http://localhost:5000/api').replace('/api', '');
+const API = (API_URL || 'http://localhost:5000/api').replace('/api', '');
 
 function AdminBubble({ m, onEdit, onDelete }) {
   const [hover, setHover]  = useState(false);

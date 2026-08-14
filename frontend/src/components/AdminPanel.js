@@ -8,8 +8,8 @@ import {
 } from 'react-icons/fi';
 import { LuFlower } from 'react-icons/lu';
 
-const API = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
-const ADMIN_API = (process.env.REACT_APP_API_URL || 'http://localhost:5000/api') + '/admin';
+const API = API_URL || 'http://localhost:5000/api';
+const ADMIN_API = (API_URL || 'http://localhost:5000/api') + '/admin';
 const THEME_KEY = 'adm_theme';
 const TOKEN_KEY = 'adm_token';
 
@@ -578,7 +578,7 @@ function UsersPage({ toast }) {
 
 /* ─── StatsPage ─── */
 function StatsPage({ toast }) {
-  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+  const API_BASE = API_URL || 'http://localhost:5000/api';
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 

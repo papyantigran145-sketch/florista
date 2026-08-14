@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FiClipboard, FiTruck, FiCheck, FiX, FiSearch } from 'react-icons/fi';
 import { LuFlower } from 'react-icons/lu';
 
-const API = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API = API_URL || 'http://localhost:5000/api';
 
 const STATUSES = [
   { key: 'new',         icon: <FiClipboard />, label: 'Заказ принят', color: '#6366f1' },

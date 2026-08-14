@@ -3,7 +3,7 @@ import { LuFlower } from 'react-icons/lu';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { io } from 'socket.io-client';
 
-const API = process.env.REACT_APP_API_URL?.replace('/api', '') || 'http://localhost:5000';
+const API = API_URL?.replace('/api', '') || 'http://localhost:5000';
 
 function getSessionId() {
   let id = localStorage.getItem('fl_chat_session');

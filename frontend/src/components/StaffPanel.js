@@ -7,7 +7,7 @@ import {
 import { LuFlower } from 'react-icons/lu';
 import { getUser, getToken } from '../lib/auth';
 
-const API = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API = API_URL || 'http://localhost:5000/api';
 const TOKEN_KEY = 'staff_token';
 
 const STATUSES = [

@@ -1,5 +1,5 @@
 // lib/auth.js — хранение пользователя и токена, заголовки авторизации
-export const API = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+export const API = API_URL || 'http://localhost:5000/api';
 
 export function getUser() {
   try { return JSON.parse(localStorage.getItem('fl_user') || 'null'); } catch { return null; }
