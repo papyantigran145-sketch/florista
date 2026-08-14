@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: florista-api
+    env: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      # Секрет подписи токенов. Без него вход в аккаунты не работает.
+      # Render сгенерирует значение сам при первом деплое.
+      - key: TOKEN_SECRET
+        generateValue: true
+      # Ключ входа в админку без аккаунта. Значения по умолчанию в коде НЕТ:
+      # если не задать — вход по x-admin-key останется отключённым.
+      # Сгенерированное значение видно в Render → Environment.
+      - key: ADMIN_KEY
+        generateValue: true
+      # sync: false — Render спросит значение при деплое и не запишет его в репозиторий
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: DB_HOST
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: DB_SSL
+        value: "true"
+      - key: DB_PORT
+        value: "4000"
