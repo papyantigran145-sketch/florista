@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+}
+
+header,
+main,
+section,
+footer,
+menu,
+nav {
+    width: 100%;
+    padding: 25px;
+    border: 1px solid;
+}
+
+
