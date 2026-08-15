@@ -1,16 +1,59 @@
-* {
-    margin: 0;
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
 }
 
-header,
-main,
-section,
-footer,
-menu,
-nav {
-    width: 100%;
-    padding: 25px;
-    border: 1px solid;
+.ltr {
+  direction: ltr;
+  text-align: left;
 }
 
+/* Анимация для переключателя языков */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.language-dropdown {
+  animation: slideDown 0.2s ease-out;
+}
+
+/* Стили для скролла списка языков */
+.language-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.language-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.language-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 2px;
+}
+
+.language-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Адаптация для арабского и персидского */
+.rtl .flex-row {
+  flex-direction: row-reverse;
+}
+
+.rtl .ml-2 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+.rtl .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}

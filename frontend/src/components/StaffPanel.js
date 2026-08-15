@@ -1,4 +1,4 @@
-import { API_URL } from './config.js';
+import { API_URL } from '../config.js';
 import { useState, useEffect, useCallback } from 'react';
 import {
   FiClipboard, FiTruck, FiCheck, FiX, FiSun, FiMoon, FiRefreshCw, FiLogOut,

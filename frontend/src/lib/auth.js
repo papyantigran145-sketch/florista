@@ -1,4 +1,4 @@
-import { API_URL } from './config.js';
+import { API_URL } from '../config.js';
 // lib/auth.js — хранение пользователя и токена, заголовки авторизации
 export const API = API_URL || 'http://localhost:5000/api';
 

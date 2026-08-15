@@ -1,3 +1,3 @@
 // Конфигурация API
-export const API_URL = 'https://paper-brooklyn-contributed-treatment.trycloudflare.com/api';
-export const SOCKET_URL = 'https://paper-brooklyn-contributed-treatment.trycloudflare.com';
+export const API_URL = 'https://coziness-lunchtime-removal.ngrok-free.dev/api';
+export const SOCKET_URL = 'https://coziness-lunchtime-removal.ngrok-free.dev';

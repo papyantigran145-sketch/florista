@@ -1,3 +1,4 @@
+import { LanguageSelector } from "../i18n";
 import { useState, useRef, useEffect } from 'react';
 import {
   FiSearch, FiShoppingCart, FiSun, FiMoon, FiX, FiUser, FiLogOut, FiLogIn, FiMenu,
@@ -516,17 +517,7 @@ export default function Header({
 
           <div className="header-actions">
             {/* Переключатель языков */}
-            <div className="lang-switcher">
-              {[['en', 'EN'], ['ru', 'RU'], ['hy', 'ՀՅ']].map(([code, label]) => (
-                <button
-                  key={code}
-                  className={`lang-btn${lang === code ? ' active' : ''}`}
-                  onClick={() => onLangSwitch(code)}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
+        <LanguageSelector lang={lang} onLangChange={onLangSwitch} />
 
             <button className="theme-toggle" onClick={onThemeToggle}>
               {theme === 'dark' ? <FiSun /> : <FiMoon />}

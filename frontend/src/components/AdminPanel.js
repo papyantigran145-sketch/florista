@@ -1,6 +1,7 @@
-import { API_URL } from './config.js';
+import { API_URL } from '../config.js';
 import { useState, useEffect, useRef } from 'react';
 import AdminChat from './AdminChat';
+import ContactsPanel from "./ContactsPanel";
 import {
   FiBarChart2, FiTrendingUp, FiPackage, FiMessageSquare, FiUsers, FiMessageCircle,
   FiTag, FiSend, FiSun, FiMoon, FiLogOut, FiX, FiPlus, FiEdit2, FiTrash2,

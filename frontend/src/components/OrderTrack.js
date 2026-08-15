@@ -1,4 +1,4 @@
-import { API_URL } from './config.js';
+import { API_URL } from '../config.js';
 import { useState } from 'react';
 import { FiClipboard, FiTruck, FiCheck, FiX, FiSearch } from 'react-icons/fi';
 import { LuFlower } from 'react-icons/lu';

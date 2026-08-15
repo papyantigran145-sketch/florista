@@ -1,4 +1,4 @@
-import { API_URL } from './config.js';
+import { API_URL } from '../config.js';
 import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import {
